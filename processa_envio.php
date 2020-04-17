@@ -1,4 +1,11 @@
 <?php
+
+  require './bibliotecas/PHPMailer/Exception.php';
+  require './bibliotecas/PHPMailer/OAuth.php';
+  require './bibliotecas/PHPMailer/PHPMailer.php';
+  require './bibliotecas/PHPMailer/SMTP.php';
+  require './bibliotecas/PHPMailer/POP3.php';
+
   class Mensagem{
     private $para = null;
     private $assunto = null;
