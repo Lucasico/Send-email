@@ -14,6 +14,7 @@
     private $para = null;
     private $assunto = null;
     private $mensagem = null;
+    public $statusEnvio = array('codigo_status' => null, 'descricao' => '' );
 
     public function __get( $recurso ){
       return $this->$recurso;
@@ -38,6 +39,7 @@
   $mensagem->__set('mensagem', $_POST['mensagem']);
   if (!$mensagem->mensagemValida()){
     echo 'Campo vazio mensagem não valida!';
+    header('Location: index.php');
     die();
   }
   $mail = new PHPMailer(true);
@@ -72,11 +74,12 @@
     $mail->AltBody = 'é necessario utilizar um cliente que suporte HTML para ter acesso total ao conteudo dessa mensagem';
 
     $mail->send();
-    echo 'E-mail enviado com sucesso!';
+    $mensagem->statusEnvio['codigo_status'] = 1;
+    $mensagem->statusEnvio['descricao'] = 'E-mail enviado com sucesso!';
+   
   } catch (Exception $e) {
-    echo 'Não foi possivel enviar esse e-mail, por favor tente novamente
-    mais tarde!.';
-    echo 'Detalhes do erro: ' . $mail->ErrorInfo;
+    $mensagem->statusEnvio['codigo_status'] = 2;
+    $mensagem->statusEnvio['descricao'] = 'Não foi possivel enviar esse e-mail, por favor tente novamente
+    mais tarde!. Detalhes do erro: ' . $mail->ErrorInfo;
   }
-
 ?>
