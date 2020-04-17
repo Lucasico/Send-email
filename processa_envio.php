@@ -54,7 +54,7 @@
 
     //Recipients
     $mail->setFrom('lucassantoscrfbezerra@gmail.com', 'Remetente: LucasSantos');
-    $mail->addAddress('lucassantoscrfbezerra@gmail.com', 'Destinatario: LucasSantos');     // Add a recipient
+    $mail->addAddress($mensagem->__get('para'), 'Destinatario');     // Add a recipient
     //caso de mais destinatário so copiar a linha abaixo quantas vezes forem necessario
     // $mail->addAddress('ellen@example.com');               // Name is optional
     //destinatario para resposta seja um terceiro  $mail->addReplyTo('info@example.com', 'Information');
@@ -67,12 +67,12 @@
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Assunto';
-    $mail->Body    = 'Aqui vai o corpo do <strong>Email</strong> ';
-    $mail->AltBody = 'Aqui vai o corpo do Email, sem suporte a HTML';
+    $mail->Subject = $mensagem->__get('assunto');
+    $mail->Body    = $mensagem->__get('mensagem');
+    $mail->AltBody = 'é necessario utilizar um cliente que suporte HTML para ter acesso total ao conteudo dessa mensagem';
 
     $mail->send();
-    echo 'Message has been sent';
+    echo 'E-mail enviado com sucesso!';
   } catch (Exception $e) {
     echo 'Não foi possivel enviar esse e-mail, por favor tente novamente
     mais tarde!.';
