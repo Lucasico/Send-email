@@ -1,6 +1,4 @@
 <?php
- 
-
   class Mensagem{
     private $para = null;
     private $assunto = null;
