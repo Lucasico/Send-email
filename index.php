@@ -2,7 +2,6 @@
 	<head>
 		<meta charset="utf-8" />
     	<title>App Mail Send</title>
-
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	</head>
@@ -21,20 +20,20 @@
       			<div class="col-md-12">
   				
 					<div class="card-body font-weight-bold">
-						<form>
+						<form action="processa_envio.php" method="POST">
 							<div class="form-group">
 								<label for="para">Para</label>
-								<input type="text" class="form-control" id="para" placeholder="joao@dominio.com.br">
+								<input type="text" class="form-control" id="para" placeholder="joao@dominio.com.br" name = "email">
 							</div>
 
 							<div class="form-group">
 								<label for="assunto">Assunto</label>
-								<input type="text" class="form-control" id="assunto" placeholder="Assundo do e-mail">
+								<input type="text" class="form-control" id="assunto" placeholder="Assundo do e-mail" name = 'assunto'>
 							</div>
 
 							<div class="form-group">
 								<label for="mensagem">Mensagem</label>
-								<textarea class="form-control" id="mensagem"></textarea>
+								<textarea class="form-control" id="mensagem" name="mensagem"></textarea>
 							</div>
 
 							<button type="submit" class="btn btn-primary btn-lg">Enviar Mensagem</button>
