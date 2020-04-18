@@ -42,7 +42,7 @@ $mensagem->__set('assunto', $_POST['assunto']);
 $mensagem->__set('mensagem', $_POST['mensagem']);
 if (!$mensagem->mensagemValida()) {
   echo 'Campo vazio mensagem não valida!';
-  header('Location: index.php');
+  header('Location: ..\index.php');
   die();
 }
 $mail = new PHPMailer(true);
@@ -69,7 +69,6 @@ try {
   //Attachments
   //anexos $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
   //anexos $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
   //Content
   $mail->isHTML(true);                                  // Set email format to HTML
   $mail->Subject = $mensagem->__get('assunto');
@@ -84,7 +83,6 @@ try {
   $mensagem->statusEnvio['descricao'] = 'Não foi possivel enviar esse e-mail, por favor tente novamente
     mais tarde!. Detalhes do erro: ' . $mail->ErrorInfo;
 }
-echo 'Valor: ' . $mensagem->statusEnvio['codigo_status'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +91,7 @@ echo 'Valor: ' . $mensagem->statusEnvio['codigo_status'];
   <meta charset="UTF-8">
   <meta charset="utf-8" />
   <title>App Mail Send</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
@@ -100,7 +99,7 @@ echo 'Valor: ' . $mensagem->statusEnvio['codigo_status'];
   <div class="container">
 
     <div class="py-3 text-center">
-      <img class="d-block mx-auto mb-2" src="logo.png" alt="" width="72" height="72">
+      <img class="d-block mx-auto mb-2" src="img/logo.png" alt="" width="72" height="72">
       <h2>Send Mail</h2>
       <p class="lead">Seu app de envio de e-mails particular!</p>
     </div>
@@ -111,7 +110,7 @@ echo 'Valor: ' . $mensagem->statusEnvio['codigo_status'];
           <div class="container">
             <h1 class="display-4 text-success"> Sucesso </h1>
             <p><?= $mensagem->statusEnvio['descricao'] ?></p>
-            <a href="index.php" class="btn btn-success btn-lg mt-3 text-white">
+            <a href="..\index.php" class="btn btn-success btn-lg mt-3 text-white">
               Voltar
             </a>
           </div>
@@ -121,7 +120,7 @@ echo 'Valor: ' . $mensagem->statusEnvio['codigo_status'];
           <div class="container">
             <h1 class="display-4 text-danger"> Ops! </h1>
             <p><?= $mensagem->statusEnvio['descricao'] ?></p>
-            <a href="index.php" class="btn btn-success btn-lg mt-3 text-white">
+            <a href="..\index.php" class="btn btn-success btn-lg mt-3 text-white">
               Voltar
             </a>
           </div>
