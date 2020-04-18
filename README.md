@@ -1,4 +1,4 @@
-# Send-email
+# Send E-mail
 Projeto simples de envio de e-mail com o uso da biblioteca PHPMailer
 
 ### Observações importantes e help de configurações do smtp(gmail)
